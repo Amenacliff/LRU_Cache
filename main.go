@@ -1,6 +1,8 @@
 package main
 
-import "log"
+import (
+	"log"
+)
 
 type Node struct {
 	key  string
@@ -102,14 +104,13 @@ func (cache *LRUCache) AddItemToFront(cacheItem *Node) *Node {
 
 }
 
-func (cache *LRUCache) Get(key string) interface{} {
+func (cache *LRUCache) Get(key string) *Node {
 	if value, ok := cache.cacheMap[key]; ok {
 		if value != cache.head {
 			cache.RemoveItem(value)
 			cache.AddItemToFront(value)
 		}
-		return value.data
-
+		return value
 	} else {
 		return nil
 	}
