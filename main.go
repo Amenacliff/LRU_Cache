@@ -29,6 +29,10 @@ func (cache *LRUCache) InitializeCache(maxSize int) *LRUCache {
 	return &newLruCache
 }
 
+func (cache *LRUCache) IncreaseCacheSize(addedSpace int) {
+	cache.maxLength += addedSpace
+}
+
 func (cache *LRUCache) Put(key string, data string) {
 	newCacheItem := &Node{
 		key:  key,

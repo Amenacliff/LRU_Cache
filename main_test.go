@@ -47,3 +47,16 @@ func TestLengthOfList(t *testing.T) {
 		t.Error("The Length of the cache should not be more than, the max size of the cache ")
 	}
 }
+
+func TestIncreaseCacheSize(t *testing.T) {
+	lruCacheInit := &LRUCache{}
+	initialSize := 10
+	sizeToAdd := 3
+	cache := lruCacheInit.InitializeCache(initialSize)
+	cache.IncreaseCacheSize(sizeToAdd)
+
+	if cache.maxLength != initialSize+sizeToAdd {
+		t.Error("Increase Size Cache Function Failed Test")
+	}
+
+}
